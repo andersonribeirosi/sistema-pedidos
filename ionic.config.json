@@ -1,5 +1,11 @@
 {
-  "name": "pedidos-system",
+  "name": "appPedidos",
   "integrations": {},
-  "type": "angular"
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/categorias",
+      "proxyUrl": "http://localhost:8080"
+    }
+  ]
 }
