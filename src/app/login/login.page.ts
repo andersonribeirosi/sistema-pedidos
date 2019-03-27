@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, MenuController } from '@ionic/angular';
+import { CredenciaisDTO } from 'src/models/credenciais.dto.';
+import { AuthServiceLogin } from 'src/models/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,26 +11,45 @@ import { NavController, MenuController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
+
+  creds: CredenciaisDTO = {
+    email: "",
+    senha: ""
+  }
+
   constructor(private route: Router,
     private nav: NavController,
-    private menu: MenuController) { }
+    private menu: MenuController,
+
+    private auth: AuthServiceLogin) { }
 
   ngOnInit() {
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.menu.swipeEnable(false);
   }
 
-  ionViewDidLeave(){
+  ionViewDidLeave() {
     this.menu.swipeEnable(true);
   }
 
 
-  login(){
-    console.log("Entrou aqui");    
+  // login() {
+  //   this.auth.authenticate(this.creds).
+  //     subscribe(response => {
+  //       console.log(response.headers.get('Authorization'));
+  //       this.route.navigateByUrl('/categoria')
+  //     },
+  //       error => {
+  //       })
 
-    this.route.navigateByUrl('/categoria')
+  // }
+
+  login() {
+    
+        this.route.navigateByUrl('/categoria')
+  
   }
 
 }
